@@ -1,0 +1,78 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.listado-servicios{
+    display: grid;
+    gap: 2rem;
+
+    @include m.grid(2, 2rem);
+    
+
+    .servicio{
+        background-color: v.$blanco;
+        padding: 3rem;
+        transition: transform .3s;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+
+        &::before{
+            content: "";
+            top: 0;
+            bottom: 0;
+            left: -100%;
+            right: 100%;
+            background-color: v.$azul;
+            position: absolute;
+            z-index: -2;
+            transition: .5s ease-in-out;
+        }
+        &:hover::before{
+            left: 0;
+            right: 0;
+            transition: .5s ease-in-out;
+        }
+
+        &.seleccionado{
+            background-color: v.$azul;
+            transform:rotate(5deg);
+            box-shadow: 3px 3px 1px 1px black;
+
+            p {
+                color: v.$blanco;
+            }
+
+            p:nth-child(1)::before {
+                content: "Seleccionado";
+                font-weight: v.$bold;
+                color: v.$negro;
+                display: block;
+            }
+        }
+        
+        
+        &:hover{
+            transform: scale(1.1);
+            box-shadow: 3px 3px 1px 1px black;
+            transition: .5s ease-in-out;
+
+
+            p{
+                color: v.$blanco ;
+                transition: .5s ease-in-out;
+            }
+        }
+        
+        p{
+            color: v.$negro;
+            margin: 0 0 calc(v.$separacion / 4) 0;
+        }
+
+        .precio-servicio{
+            color: v.$azul;
+            font-weight: v.$bold;
+            margin: 0;
+            font-size: 2.5rem;
+        }
+    }
+}

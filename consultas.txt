@@ -1,0 +1,29 @@
+----LEFT----
+
+
+SELECT * FROM citas 
+LEFT OUTER JOIN usuarios 
+ON citas.usuarioId = usuarios.id 
+LEFT OUTER JOIN citasservicios
+ON citasservicios.citaId = citas.id
+LEFT OUTER JOIN servicios
+ON servicios.id = citasservicios.servicioId
+WHERE fecha = 2021-02-02 ;
+
+
+SELECT 
+citas.id, 
+citas.hora, 
+concat(usuarios.nombre," ", usuarios.apellido) as "Cliente", 
+usuarios.email, 
+usuarios.telefono,
+servicios.nombre as "Servicio",
+servicios.precio
+FROM citas 
+LEFT OUTER JOIN usuarios 
+ON citas.usuarioId = usuarios.id 
+LEFT OUTER JOIN citasservicios
+ON citasservicios.citaId = citas.id
+LEFT OUTER JOIN servicios
+ON servicios.id = citasservicios.servicioId
+WHERE fecha = "";

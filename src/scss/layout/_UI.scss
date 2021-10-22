@@ -1,0 +1,58 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.contenedor-app{
+    @include m.tablet{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        min-height: 100vh;
+    }
+    .imagen{
+        height: 20rem;
+        background: url(../img/andrea-donato-MNu0n-3BIKs-unsplash.jpg);
+        background-size: cover;
+        background-position: left center;
+        object-fit: cover;
+        background-attachment: fixed;
+        
+        @include m.tablet{
+            height: auto;
+        }
+    }
+
+    .app{
+        width: 95%;
+        margin: 0 auto;
+
+   
+    }
+}
+
+.barra{
+    margin: v.$separacion 0;
+
+    
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    
+
+    .boton{
+        @include m.boton(v.$rojo, v.$blanco);
+        margin: 0;
+        width: 35%;
+    }
+}
+
+.barra-servicios{
+    // margin-bottom: v.$separacion;
+
+    @include m.tablet{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .boton{
+        margin: 0 0 1rem 0;
+    }
+}
